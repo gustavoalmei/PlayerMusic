@@ -31,58 +31,83 @@ function convertTimeAudio() {
 
   MinutesSeconds.innerText = `${Minutes}:${Seconds}`
   MinutesSecondsLive.innerText = `${MinutesLive}:${SecondsLive}`
+
+  MinutesSeconds.innerText = `${Minutes}:${Seconds}`
+  MinutesSecondsLive.innerText = `${MinutesLive}:${SecondsLive}`
 }
 // Definindo tempo de intervalo para executar a função
 setInterval(convertTimeAudio, 100)
 
+function timeMusic(){
+  audioPlayer.currentTime = progress.value
+}
+
+
 // Configurando barra de progresso da música
 function ProgressAudio() {
-  progress.ariaValueMax = audioPlayer.duration
+  progress.max = audioPlayer.duration
   progress.value = audioPlayer.currentTime
 }
 // Definindo tempo de intervalo para executar a função
 setInterval(ProgressAudio,100)
 
+//Play Musica
 function PlayMusic(){
   audioPlayer.play()
 }
 
+//Pausar Musica
 function PauseMusic(){
   audioPlayer.pause()
 }
 
+//Avançar 10s
 function MoreSecondMusic(){
   audioPlayer.currentTime += 10
 }
 
+//Voltar 10s
 function LessSecondMusic(){
   audioPlayer.currentTime -= 10
 }
 
-function ChangeTimeMusic(){
-  progress.value = audioPlayer.currentTime
-}
+let soundMuted = false
 
-let soundMute = false
-
+// controle de audio e som
 function ChangeVolume(){
   audioPlayer.volume = InputVolume.value / 100
 
   if(InputVolume.value == 0){
-    soundMute = true
     sound.setAttribute("src", "./assets/img/volume-mute-regular-24.png")
-    return soundMute = true
+    audioPlayer.muted = true
+    soundMuted = true
+    return soundMuted
   }else{
-    soundMute = false
     sound.setAttribute("src", "./assets/img/volume-full-regular-24.png")
-    return soundMute = false
+    audioPlayer.muted = false
+    soundMuted = false
+    return soundMuted
   }
 }
 
+// Mutando
+function mute(){
+
+  VolMusic = InputVolume.value / 100;
+  if(audioPlayer.muted == true){
+    sound.setAttribute("src", "./assets/img/volume-full-regular-24.png")
+    audioPlayer.muted = false
+  }else{
+    sound.setAttribute("src", "./assets/img/volume-mute-regular-24.png")
+    audioPlayer.muted = true
+  }
+}
 
 audioPlay.addEventListener("click", PlayMusic)
 audioPause.addEventListener("click", PauseMusic)
 advTime.addEventListener("click", MoreSecondMusic)
 backTime.addEventListener("click", LessSecondMusic)
-progress.addEventListener("change", ChangeTimeMusic)
 InputVolume.addEventListener("input", ChangeVolume)
+progress.addEventListener("input", timeMusic)
+
+// Músicas
