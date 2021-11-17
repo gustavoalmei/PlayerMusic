@@ -1,13 +1,17 @@
 let audioPlayer = document.querySelector('#audioPlayer')
 let progress = document.querySelector('#progress')
-let audioPlay = document.querySelector('#play')
-let audioPause = document.querySelector('#pause')
+let audioPlay = document.querySelector('#playPause')
 let advTime = document.querySelector('#advTime')
 let backTime = document.querySelector('#backTime')
 let MinutesSeconds = document.querySelector('#MinutesSeconds')
 let MinutesSecondsLive = document.querySelector('#MinutesSecondsLive')
 let InputVolume = document.querySelector('#InputVolume')
 let sound = document.querySelector('#sound')
+let NextMusic = document.querySelector('#NextMusic')
+let backMusic = document.querySelector('#backMusic')
+let songs = document.querySelector('#songs')
+let author = document.querySelector('#author')
+let nameMusic = document.querySelector('#nameMusic')
 
 // Convertendo time do audio, e configurando time live
 function convertTimeAudio() {
@@ -36,12 +40,42 @@ function convertTimeAudio() {
   MinutesSecondsLive.innerText = `${MinutesLive}:${SecondsLive}`
 }
 // Definindo tempo de intervalo para executar a função
-setInterval(convertTimeAudio, 100)
+setInterval(convertTimeAudio, 1000)
 
 function timeMusic(){
   audioPlayer.currentTime = progress.value
 }
 
+// Músicas
+
+const track = [{
+    index: 0,
+    nome:"Matue",
+    musica: "Anos luz",
+    src: "assets/music/Matuê_Anos_Luz.mp4"
+  },
+
+  {
+    index: 1,
+    nome:"Lagum",
+    musica: "EU E MINHAS PARANOIAS",
+    src: "assets/music/Lagum_EU_E_MINHAS_PARANOIAS.mp3"
+  },
+
+  {
+    index: 2,
+    nome:"Lagum",
+    musica: "Ninguém Me Ensinou (KVSH Remix )",
+    src: "assets/music/Lagum_Ninguem_Me_Ensinou.mp3"
+  },
+
+  {
+    index: 3,
+    nome:"Jovem Dionisio - Pontos de Exclamação (Vintage Culture & Future Class Remix)",
+    musica: "Pontos de exclamações",
+    src: "assets/music/Jovem_Dionisio_Pontos_de_Exclamação.mp3"
+}
+];
 
 // Configurando barra de progresso da música
 function ProgressAudio() {
@@ -51,14 +85,21 @@ function ProgressAudio() {
 // Definindo tempo de intervalo para executar a função
 setInterval(ProgressAudio,100)
 
-//Play Musica
-function PlayMusic(){
-  audioPlayer.play()
-}
 
-//Pausar Musica
-function PauseMusic(){
-  audioPlayer.pause()
+//Play Pause Musica
+
+let playing = true;
+function PlayMusic(){
+  
+  if(playing){
+    playPause.setAttribute("src", "./assets/img/pause-circle-regular-24.png")
+    audioPlayer.play()
+    return playing = false
+  }else{
+    playPause.setAttribute("src", "./assets/img/play-circle-regular-24.png")
+    audioPlayer.pause()
+    return playing = true
+  }
 }
 
 //Avançar 10s
@@ -91,23 +132,58 @@ function ChangeVolume(){
 }
 
 // Mutando
+let UserVol;
 function mute(){
+  UserVol = audioPlayer.volume * 100
 
-  VolMusic = InputVolume.value / 100;
   if(audioPlayer.muted == true){
     sound.setAttribute("src", "./assets/img/volume-full-regular-24.png")
     audioPlayer.muted = false
+    InputVolume.value = UserVol
   }else{
     sound.setAttribute("src", "./assets/img/volume-mute-regular-24.png")
     audioPlayer.muted = true
+    InputVolume.value = 0
   }
 }
 
-audioPlay.addEventListener("click", PlayMusic)
-audioPause.addEventListener("click", PauseMusic)
+//Mudando música, avançando e voltando
+let songIndex = 0;
+
+function nextMusic(){
+  songIndex++;
+
+  if(songIndex > track.length){  
+    alert("Limite máximo de músicas.")
+  }else{
+    songs.src = track[songIndex].src;
+    author.innerText = track[songIndex].nome;
+    nameMusic.innerText = track[songIndex].musica;
+
+    audioPlayer.load()
+    PlayMusic()
+  }
+}
+
+function backtMusic(){
+  songIndex--;
+
+  if(songIndex < 0){  
+    alert("Limite máximo de músicas.")
+  }else{
+    songs.src = track[songIndex].src;
+    author.innerText = track[songIndex].nome;
+    nameMusic.innerText = track[songIndex].musica;
+
+    audioPlayer.load()
+    PlayMusic()
+  }
+}
+
+playPause.addEventListener("click", PlayMusic)
 advTime.addEventListener("click", MoreSecondMusic)
 backTime.addEventListener("click", LessSecondMusic)
 InputVolume.addEventListener("input", ChangeVolume)
 progress.addEventListener("input", timeMusic)
-
-// Músicas
+NextMusic.addEventListener("click", nextMusic)
+backMusic.addEventListener("click", backtMusic)
