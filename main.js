@@ -91,16 +91,16 @@ function ProgressAudio() {
 setInterval(ProgressAudio, 100)
 
 //Play Pause Musica
-let playing = true
+let playing = false
 function PlayMusic() {
-  if (playing) {
+  if (playing == false) {
     playPause.setAttribute('src', './assets/img/pause-circle-regular-50.png')
     audioPlayer.play()
-    return (playing = false)
+    return (playing = true)
   } else {
     playPause.setAttribute('src', './assets/img/play-circle-regular-50.png')
     audioPlayer.pause()
-    return (playing = true)
+    return (playing = false)
   }
 }
 
@@ -125,13 +125,12 @@ function ChangeVolume() {
     audioPlayer.muted = true
     soundMuted = true
     return soundMuted
-  } 
-  else if(InputVolume.value <= 30) {
+  } else if (InputVolume.value <= 30) {
     sound.setAttribute('src', './assets/img/volume-low-regular-48.png')
     audioPlayer.muted = false
     soundMuted = false
     return soundMuted
-  }else {
+  } else {
     sound.setAttribute('src', './assets/img/volume-full-regular-50.png')
     audioPlayer.muted = false
     soundMuted = false
@@ -147,10 +146,12 @@ function mute() {
   if (audioPlayer.muted == true) {
     sound.setAttribute('src', './assets/img/volume-full-regular-50.png')
     audioPlayer.muted = false
+    soundMuted = false
     InputVolume.value = UserVol
   } else {
     sound.setAttribute('src', './assets/img/volume-mute-regular-50.png')
     audioPlayer.muted = true
+    soundMuted = true
     InputVolume.value = 0
   }
 }
@@ -162,16 +163,16 @@ function nextMusic() {
   songIndex++
 
   if (songIndex >= track.length) {
-    alert('Limite máximo de músicas.')
-  } else {
-    songs.src = track[songIndex].src
-    author.innerText = track[songIndex].nome
-    nameMusic.innerText = track[songIndex].musica
-    photoAlbum.src = track[songIndex].photo
-
-    audioPlayer.load()
-    PlayMusic()
+    songIndex = 0
   }
+
+  songs.src = track[songIndex].src
+  author.innerText = track[songIndex].nome
+  nameMusic.innerText = track[songIndex].musica
+  photoAlbum.src = track[songIndex].photo
+
+  audioPlayer.load()
+  PlayMusic()
 }
 
 function backtMusic() {
@@ -179,15 +180,14 @@ function backtMusic() {
 
   if (songIndex < 0) {
     alert('Limite máximo de músicas.')
-  } else {
-    songs.src = track[songIndex].src
-    author.innerText = track[songIndex].nome
-    nameMusic.innerText = track[songIndex].musica
-    photoAlbum.src = track[songIndex].photo
-
-    audioPlayer.load()
-    PlayMusic()
   }
+  songs.src = track[songIndex].src
+  author.innerText = track[songIndex].nome
+  nameMusic.innerText = track[songIndex].musica
+  photoAlbum.src = track[songIndex].photo
+
+  audioPlayer.load()
+  PlayMusic()
 }
 
 // Definidno função para carregar a primeira faixa com a página, e definir volume padrão
