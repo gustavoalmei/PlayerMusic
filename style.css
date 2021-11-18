@@ -1,3 +1,92 @@
-.bttn{
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: content-box;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+html, body{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body{
+  background-image: url("assets/img/background.gif"); 
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  text-align: center;
+  border: 5px solid black;
+  border-radius: 15px;
+  padding: 20px;
+  background-color: white;
+}
+
+.infoMusic > h1, p {
+  margin: 10px;
+}
+
+#photoAlbum{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#photoAlbum{
+  width: 350px;
+}
+
+.controls{
+  width: 100%;
+}
+
+.buttons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#progress{
+  width: 50%;
+}
+
+#backMusic > svg{
+  transform: rotate(180deg);
+}
+
+.volSound{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.volSound {
+  width: 30px;
+}
+
+.bttn {
   cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .container{
+    padding: 15px;
+  }
+
+  #photoAlbum{
+    width: 250px;
+  }
+  
+  .bttn > img,svg{
+    width: 35px;
+    margin: 5px;
+  }
 }

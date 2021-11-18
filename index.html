@@ -7,32 +7,37 @@
     <title>Player Music</title>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="/assets/img/music-solid-24.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300&display=swap" rel="stylesheet">
   </head>
   <body>
     <main>
       <div class="container">
         <div class="audio">
           <audio id="audioPlayer" nocontrols>
-            <source src="" id="songs"type="audio/mpeg" />
+            <source src="assets/music/Matuê_Anos_Luz.mp4" id="songs"type="audio/mpeg"/>
           </audio>
           <div class="infoMusic">
-            <h1 id="author">Cantor</h1>
-            <p id="nameMusic">Musica</p>
+            <img id="photoAlbum" src="assets/img/matue_anos_luz.png" alt="Foto Álbum">
+            <h1 id="nameMusic">Musica</h1>
+            <p id="author">Cantor</p>
           </div>
-          <input type="range" name="progress" id="progress" step="1" max="100" min="0"/>
           <span id="MinutesSecondsLive">00:00</span>
+          <input type="range" name="progress" id="progress" step="1" max="100" min="0"/>
           <span id="MinutesSeconds">00:00</span>
         </div>
         <div class="controls">
+          <div class="buttons">
           <span class="bttn" id="backMusic">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="m8 16 5-4-5-4zm5-4v4h2V8h-2z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="m8 16 5-4-5-4zm5-4v4h2V8h-2z"></path></svg>
             </svg>
           </span>
           <span class="bttn" id="backTime">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              width="50"
+              height="50"
               viewBox="0 0 24 24"
               style="fill: rgba(0, 0, 0, 1); transform: ; msfilter: "
             >
@@ -43,13 +48,13 @@
             </svg>
           </span>
           <span class="bttn">
-            <img id="playPause" src="/assets/img/play-circle-regular-24.png" alt="Button Play Pause">
+            <img id="playPause" src="/assets/img/play-circle-regular-50.png" alt="Button Play Pause">
           </span>
           <span class="bttn" id="advTime">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              width="50"
+              height="50"
               viewBox="0 0 24 24"
               style="fill: rgba(0, 0, 0, 1); transform: ; msfilter: "
             >
@@ -60,13 +65,15 @@
             </svg>
           </span>
           <span class="bttn" id="NextMusic">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="m8 16 5-4-5-4zm5-4v4h2V8h-2z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="m8 16 5-4-5-4zm5-4v4h2V8h-2z"></path></svg>
             </svg>
-          </span>
-          <span class="bttn" >
-            <img id="sound" onclick="mute()" src="./assets/img/volume-full-regular-24.png" alt="Sound">
-          </span>
-          <input type="range" name="InputVolume" id="InputVolume" step="5" max="100" min="0">
+          </span></div>
+          <div class="volSound">
+            <span class="bttn" >
+              <img id="sound" onclick="mute()" src="./assets/img/volume-full-regular-50.png" alt="Sound">
+            </span>
+            <input type="range" name="InputVolume" id="InputVolume" step="5" max="100" min="0" >
+          </div>
         </div>
       </div>
     </main>
