@@ -55,10 +55,14 @@ body{
 }
 
 #progress{
-  width: 50%;
+  width: 80%;
 }
 
 #backMusic > svg{
+  transform: rotate(180deg);
+}
+
+#backTime > svg{
   transform: rotate(180deg);
 }
 
@@ -68,12 +72,13 @@ body{
   justify-content: start;
 }
 
-.volSound {
+#sound{
   width: 30px;
 }
 
 .bttn {
   cursor: pointer;
+  margin: 5px;
 }
 
 @media screen and (max-width: 500px) {
@@ -88,5 +93,9 @@ body{
   .bttn > img,svg{
     width: 35px;
     margin: 5px;
+  }
+
+  #progress{
+    width: 50%;
   }
 }
