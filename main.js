@@ -1,18 +1,21 @@
-let audioPlayer = document.querySelector('#audioPlayer')
-let progress = document.querySelector('#progress')
-let audioPlay = document.querySelector('#playPause')
-let advTime = document.querySelector('#advTime')
-let backTime = document.querySelector('#backTime')
-let MinutesSeconds = document.querySelector('#MinutesSeconds')
-let MinutesSecondsLive = document.querySelector('#MinutesSecondsLive')
-let InputVolume = document.querySelector('#InputVolume')
-let sound = document.querySelector('#sound')
-let NextMusic = document.querySelector('#NextMusic')
-let backMusic = document.querySelector('#backMusic')
-let songs = document.querySelector('#songs')
-let author = document.querySelector('#author')
-let nameMusic = document.querySelector('#nameMusic')
-let photoAlbum = document.querySelector('#photoAlbum')
+// Definindo variáveis
+let player = {
+  audioPlayer: document.querySelector('#audioPlayer'),
+  progress: document.querySelector('#progress'),
+  audioPlay: document.querySelector('#playPause'),
+  advTime: document.querySelector('#advTime'),
+  backTime: document.querySelector('#backTime'),
+  MinutesSeconds: document.querySelector('#MinutesSeconds'),
+  MinutesSecondsLive: document.querySelector('#MinutesSecondsLive'),
+  InputVolume: document.querySelector('#InputVolume'),
+  sound: document.querySelector('#sound'),
+  NextMusic: document.querySelector('#NextMusic'),
+  backMusic: document.querySelector('#backMusic'),
+  songs: document.querySelector('#songs'),
+  author: document.querySelector('#author'),
+  nameMusic: document.querySelector('#nameMusic'),
+  photoAlbum: document.querySelector('#photoAlbum')
+}
 
 // Convertendo time do audio, e configurando time live
 function convertTimeAudio() {
